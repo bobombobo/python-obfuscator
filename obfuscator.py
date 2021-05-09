@@ -1,0 +1,87 @@
+import random
+import base64
+
+# list of one and zero to chose from for the random.choice
+whathtenuts = [str(1),str(0)]
+
+code=('''
+print("haha lol XD :flushed:")
+''')
+
+# V byte code
+bc = code.encode('utf-8')
+base64enc=base64.b64encode(bc)
+
+#gotta use oh's (o) when starting it cuz variables can't use numbers as their first character or something idk
+bruhlol = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+bruhlol2 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+bruhlol3 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+lessgoo = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+
+b64e_run = ("""
+import base64
+
+{bruhlol} = {base64enc}
+{bruhlol2} = base64.b64decode({bruhlol})
+{bruhlol3} = {bruhlol2}.decode('utf-8')
+exec({bruhlol3})
+""").format(
+base64enc=base64enc,
+bruhlol=bruhlol,
+bruhlol2 = bruhlol2,
+bruhlol3=bruhlol3,
+lessgoo=lessgoo,
+)
+
+
+check_for_watermark_yes = ("""
+if watermark == ("Wow this is all it takes to make an 'obfuscator'... sad!"):
+  exec('''{b64e_run}''')
+""").format(b64e_run=b64e_run)
+
+res = ''.join(format(ord(i), '08b') for i in check_for_watermark_yes)
+
+
+farted = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+hahahahabase = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj1 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj2 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj3 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj4 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj5 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj6 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj7 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+
+
+final_script = ("""
+import base64
+watermark = ("Wow this is all it takes to make an 'obfuscator'... sad!")
+
+{hahahahabase} = eval(''.join(chr(int("00111000"[i*8:i*8+8],2)) for i in range(len("00111000")//8)))
+{randobj1} = eval(''.join(chr(int("01100101011110000110010101100011"[i*8:i*8+8],2)) for i in range(len("01100101011110000110010101100011")//8)))
+{randobj2} = eval(''.join(chr(int("00100111001001110010111001101010011011110110100101101110"[i*8:i*8+8],2)) for i in range(len("00100111001001110010111001101010011011110110100101101110")//8)))
+{randobj3} = eval(''.join(chr(int("011000110110100001110010"[i*8:i*8+8],2)) for i in range(len("011000110110100001110010")//8)))
+{randobj4} = eval(''.join(chr(int("011010010110111001110100"[i*8:i*8+8],2)) for i in range(len("011010010110111001110100")//8)))
+{randobj5} = eval(''.join(chr(int("0111001001100001011011100110011101100101"[i*8:i*8+8],2)) for i in range(len("0111001001100001011011100110011101100101")//8)))
+{randobj6} = eval(''.join(chr(int("011011000110010101101110"[i*8:i*8+8],2)) for i in range(len("011011000110010101101110")//8)))
+{randobj7} = eval(''.join(chr(int("00110010"[i*8:i*8+8],2)) for i in range(len("00110010")//8)))
+
+
+
+
+{randobj1}({randobj2}({randobj3}({randobj4}(("{res}")[{farted}*{hahahahabase}:{farted}*{hahahahabase}+{hahahahabase}],{randobj7})) for {farted} in {randobj5}({randobj6}(("{res}"))//{hahahahabase})))
+""").format(
+res=res,
+hahahahabase=hahahahabase, 
+farted=farted, 
+randobj1=randobj1, 
+randobj2=randobj2,
+randobj3=randobj3,
+randobj4=randobj4,
+randobj5=randobj5,
+randobj6=randobj6,
+randobj7=randobj7)
+
+print(final_script)
+
+#res = ''.join(chr(int(res[i*8:i*8+8],2)) for i in range(len(res)//8))
