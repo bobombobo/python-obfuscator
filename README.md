@@ -3,6 +3,8 @@ binary and base64 encoding obfuscator
 
 obfuscates code into base64 then binary with decryptors built into so the file can run natively
 
+(Sorry for shit documentation and horrible commenting. Also sorry for the terrible variable names lol :)
+
 # Example code:
 starts with:
 print("haha lol XD :flushed:")
