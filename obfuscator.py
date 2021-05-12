@@ -2,7 +2,17 @@ import random
 import base64
 
 # list of one and zero to chose from for the random.choice
-whathtenuts = [str(1),str(0)]
+# new variable name type
+var_type = 2
+if var_type == 1:
+    whathtenuts = [str(1),str(0)]
+elif var_type == 2:
+    whathtenuts = ["I", "l"]
+elif var_type == 3:
+    whathtenuts = ["p", "q"]
+else:
+    print("Dude.... not a list type available")
+
 
 code=('''
 print("haha lol XD :flushed:")
@@ -13,10 +23,16 @@ bc = code.encode('utf-8')
 base64enc=base64.b64encode(bc)
 
 #gotta use oh's (o) when starting it cuz variables can't use numbers as their first character or something idk
-bruhlol = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-bruhlol2 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-bruhlol3 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-lessgoo = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+dudewhatthenuts = "nil"
+if var_type == 1:
+    dudewhatthenuts = "O"
+else:
+    dudewhatthenuts = ""
+
+bruhlol = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+bruhlol2 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+bruhlol3 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+lessgoo = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
 
 b64e_run = ("""
 import base64
@@ -42,15 +58,15 @@ if watermark == ("Wow this is all it takes to make an 'obfuscator'... sad!"):
 res = ''.join(format(ord(i), '08b') for i in check_for_watermark_yes)
 
 
-farted = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-hahahahabase = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-randobj1 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-randobj2 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-randobj3 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-randobj4 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-randobj5 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-randobj6 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
-randobj7 = "O"+(''.join(random.choice(whathtenuts) for i in range(12)))
+farted = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+hahahahabase = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj1 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj2 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj3 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj4 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj5 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj6 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+randobj7 = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
 
 
 final_script = ("""
