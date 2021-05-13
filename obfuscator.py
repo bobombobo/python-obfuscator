@@ -3,13 +3,13 @@ import base64
 
 # list of one and zero to chose from for the random.choice
 # new variable name type
-var_type = 2
+var_type = 3
 if var_type == 1:
     whathtenuts = [str(1),str(0)]
 elif var_type == 2:
     whathtenuts = ["I", "l"]
 elif var_type == 3:
-    whathtenuts = ["p", "q"]
+    whathtenuts = ["O", "0"]
 else:
     print("Dude.... not a list type available")
 
@@ -24,7 +24,7 @@ base64enc=base64.b64encode(bc)
 
 #gotta use oh's (o) when starting it cuz variables can't use numbers as their first character or something idk
 dudewhatthenuts = "nil"
-if var_type == 1:
+if var_type == 1 or var_type == 3:
     dudewhatthenuts = "O"
 else:
     dudewhatthenuts = ""
