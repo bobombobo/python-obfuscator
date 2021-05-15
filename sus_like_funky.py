@@ -138,4 +138,4 @@ def gen_layer(ammount):
 why_dis_no_work = 10
 gen_layer(why_dis_no_work)
 
-
+#dude what
