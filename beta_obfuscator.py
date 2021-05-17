@@ -104,6 +104,9 @@ randobj7=randobj7)
 #JSON obfuscation? idk man im bored
 #dud what the fuck am i doing
 
+#lets define some choices
+variable_ammount_lenght = 200
+
 #whathtenuts = [1,0]
 
 letters = string.ascii_lowercase + string.ascii_uppercase
@@ -115,7 +118,7 @@ layer=[]
 layers_p_text = []
 #decide = random.choice(whathtenuts)
 for x in range(ammount):
-    random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(20)))
+    random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(variable_ammount_lenght)))
     theform = ("'random_text': {").replace("random_text", random_text)
     layers_p_text.append(random_text)
     layer.append(theform)
@@ -124,7 +127,7 @@ for x in range(ammount):
 back_at_it = []
 back_p_text = []
 for x in range(ammount):
-    random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(20)))
+    random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(variable_ammount_lenght)))
     theform = ("'random_text': {").replace("random_text", random_text)
     back_p_text.append(random_text)
     back_at_it.append(theform)
@@ -133,12 +136,14 @@ for x in range(ammount):
 some_text_ig = ("{" + ''.join(layer) + 'penis_cum' + ('}' * (ammount+1)))
 
 #just using random names now cuz i don't want to name anymore
+print(top_text_code)
+
 for x in range(3):
     urwpu13948h5 = []
     asd908ugunwqing = []
     toup_text_ammount = 12 #12 line on top of the actual cod text
     for x in range(toup_text_ammount):
-        random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(200)))
+        random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(variable_ammount_lenght)))
         theform = ("'random_text': {").replace("random_text", random_text)
         urwpu13948h5.append(random_text)
         asd908ugunwqing.append(theform)
@@ -147,8 +152,18 @@ for x in range(3):
     print(okayLesGo)
 
 
-
-
 dickfuck = (some_text_ig.replace("penis_cum", final_script))
-print(top_text_code)
 print(dickfuck)
+
+for x in range(3):
+    urwpu13948h5 = []
+    asd908ugunwqing = []
+    toup_text_ammount = 12 #12 line on top of the actual cod text
+    for x in range(toup_text_ammount):
+        random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(variable_ammount_lenght)))
+        theform = ("'random_text': {").replace("random_text", random_text)
+        urwpu13948h5.append(random_text)
+        asd908ugunwqing.append(theform)
+    
+    okayLesGo = ("{" + ''.join(asd908ugunwqing) + ('}' * (toup_text_ammount+1)))
+    print(okayLesGo)
