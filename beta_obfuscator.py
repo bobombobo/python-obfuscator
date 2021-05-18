@@ -118,6 +118,8 @@ top_layers = 5
 #whathtenuts = [1,0]
 
 ammount = 1
+
+#This one is to form the string where the code is embeded :)
 layer=[]
 layers_p_text = []
 #decide = random.choice(whathtenuts)
@@ -128,6 +130,8 @@ for x in range(ammount):
     layer.append(theform)
 
 
+#This one does do shit i guess
+"""
 back_at_it = []
 back_p_text = []
 for x in range(ammount):
@@ -135,13 +139,17 @@ for x in range(ammount):
     theform = ("'random_text': {").replace("random_text", random_text)
     back_p_text.append(random_text)
     back_at_it.append(theform)
-    
+  """ 
     
 some_text_ig = ("{" + ''.join(layer) + 'penis_cum' + ('}' * (ammount+1)))
 
 #just using random names now cuz i don't want to name anymore
+#What the fuck does this do????????
+#OOOHHH it prints the water mark and definitions of functions
 print(top_text_code)
 
+
+#Okay this one is the top layers of random strings
 for x in range(top_layers): #this many interations on the bottom
     urwpu13948h5 = []
     asd908ugunwqing = []
@@ -156,9 +164,11 @@ for x in range(top_layers): #this many interations on the bottom
     print(okayLesGo)
 
 
+#This creates the actual script to be executed 
 dickfuck = (some_text_ig.replace("penis_cum", final_script))
 print(dickfuck)
 
+#and then this one is thebottom layers of random strings
 for x in range(top_layers): #this many interations on bottom
     urwpu13948h5 = []
     asd908ugunwqing = []
