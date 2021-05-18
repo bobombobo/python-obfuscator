@@ -1,0 +1,30 @@
+#Method 2 encryption by boboMbobo | https://github.com/bobombobo/python-obfuscator
+def split(word):
+    return [char for char in word]
+    
+
+def encrypt(string):
+    split_string = list(string)
+    end_string = []
+    for x in range(len(split_string)):
+        end_string.append(str((ord(split_string[x]))*"o"))
+    
+    end2 = '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'.join(end_string)
+    return(end2)
+
+
+#-_-_-_-_-_-_-
+#start decryption :)
+def decrypt(end2):
+    splitit = end2.split("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+    
+    asguei = []
+    for x in range(len(splitit)):
+        jeez = (len(splitit[x]))
+        asguei.append(chr(jeez))
+        
+        
+    si = ''.join(asguei)
+    return(si)
+    
+    
