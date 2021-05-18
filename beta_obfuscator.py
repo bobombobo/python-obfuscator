@@ -17,7 +17,7 @@ else:
 
 
 code=('''
-print("idk anymore dude")
+print("hello")
 ''')
 
 # V byte code
@@ -105,15 +105,19 @@ randobj7=randobj7)
 #dud what the fuck am i doing
 
 #lets define some choices
-variable_ammount_lenght = 200
+#okay i guess ill tell you what each variable does cuz idk any more :)
+#This one is for how long each lenght of characters is for the string of the stuff
+#ex: variable_ammount_lenght = 10 so in {'O0001011110':, the lenght is 10 or something
+variable_ammount_lenght = 10
+#This one is for how many of the list stuff is for each layer
+toup_text_ammount = 10
+#This one is for how many of the list stuff is on top and bottom
+top_layers = 5
+
 
 #whathtenuts = [1,0]
 
-letters = string.ascii_lowercase + string.ascii_uppercase
-joemama = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
-
-
-ammount = 5
+ammount = 1
 layer=[]
 layers_p_text = []
 #decide = random.choice(whathtenuts)
@@ -138,10 +142,10 @@ some_text_ig = ("{" + ''.join(layer) + 'penis_cum' + ('}' * (ammount+1)))
 #just using random names now cuz i don't want to name anymore
 print(top_text_code)
 
-for x in range(3):
+for x in range(top_layers): #this many interations on the bottom
     urwpu13948h5 = []
     asd908ugunwqing = []
-    toup_text_ammount = 12 #12 line on top of the actual cod text
+    #toup_text_ammount = 2 #12 line on top of the actual code text
     for x in range(toup_text_ammount):
         random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(variable_ammount_lenght)))
         theform = ("'random_text': {").replace("random_text", random_text)
@@ -155,10 +159,10 @@ for x in range(3):
 dickfuck = (some_text_ig.replace("penis_cum", final_script))
 print(dickfuck)
 
-for x in range(3):
+for x in range(top_layers): #this many interations on bottom
     urwpu13948h5 = []
     asd908ugunwqing = []
-    toup_text_ammount = 12 #12 line on top of the actual cod text
+    #toup_text_ammount = 2 #12 line on top of the actual cod text
     for x in range(toup_text_ammount):
         random_text = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(variable_ammount_lenght)))
         theform = ("'random_text': {").replace("random_text", random_text)
