@@ -1,6 +1,42 @@
 import random
 import base64
 import string
+import time
+import os
+
+custom_input = False
+custom_output = False
+
+code=('''print('by boboMbbobo')''')
+
+
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
+
+if custom_input == True:
+  print("Select the file to encrypt: ")
+  print("Example: code.py, code.txt, ect...")
+  file_input = input()
+  fopening = open(file_input, "r")
+  code = (fopening.read())
+else:
+  file_input = code
+  
+
+if custom_output == True:
+  file_output = input("Output file: ")
+else:
+  file_output = ("obfuscated.py")
+
+
+cls()
+start = time.time()
+
+print("Thank you for using my python obfuscator!")
+print("Created by boboMbobo | https://github.com/bobombobo")
+print("Input: " + file_input)
+print("Output file: " + file_output)
+print("--------------------------------------")
 
 
 # list of one and zero to chose from for the random.choice
@@ -8,19 +44,21 @@ import string
 var_type = 1
 if var_type == 1:
     whathtenuts = [str(1),str(0)]
+    print("using var type 0, 1")
 elif var_type == 2:
     whathtenuts = ["I", "l"]
+    print("using var type I, l")
 elif var_type == 3:
     whathtenuts = ["O", "0"]
+    print("using var type O, 0")
 else:
     print("Dude.... not a list type available")
 
 
-code=('''
-print("hello")
-''')
+
 
 # V byte code
+print("base64 encrypting...")
 bc = code.encode('utf-8')
 base64enc=base64.b64encode(bc)
 
@@ -38,7 +76,6 @@ lessgoo = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)
 
 b64e_run = ("""
 import base64
-
 {bruhlol} = {base64enc}
 {bruhlol2} = base64.b64decode({bruhlol})
 {bruhlol3} = {bruhlol2}.decode('utf-8')
@@ -56,6 +93,8 @@ check_for_watermark_yes = ("""
 if watermark == ("Wow this is all it takes to make an 'obfuscator'... sad!"):
   exec('''{b64e_run}''')
 """).format(b64e_run=b64e_run)
+
+print("binary encrypting...")
 
 res = ''.join(format(ord(i), '08b') for i in check_for_watermark_yes)
 
@@ -99,7 +138,6 @@ randobj7=randobj7)
 
 #res = ''.join(chr(int(res[i*8:i*8+8],2)) for i in range(len(res)//8))
 
-
 #_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 #JSON obfuscation? idk man im bored
 #dud what the fuck am i doing
@@ -120,6 +158,8 @@ top_layers = 5
 ammount = 1
 
 #This one is to form the string where the code is embeded :)
+print("list encrypting...")
+
 layer=[]
 layers_p_text = []
 #decide = random.choice(whathtenuts)
@@ -130,7 +170,7 @@ for x in range(ammount):
     layer.append(theform)
 
 
-#This one does do shit i guess
+#This one doesnt do shit i guess
 """
 back_at_it = []
 back_p_text = []
@@ -146,8 +186,7 @@ some_text_ig = ("{" + ''.join(layer) + 'penis_cum' + ('}' * (ammount+1)))
 #just using random names now cuz i don't want to name anymore
 #What the fuck does this do????????
 #OOOHHH it prints the water mark and definitions of functions
-print(top_text_code)
-
+#changed place for another layer :)
 
 #Okay this one is the top layers of random strings
 for x in range(top_layers): #this many interations on the bottom
@@ -160,13 +199,11 @@ for x in range(top_layers): #this many interations on the bottom
         urwpu13948h5.append(random_text)
         asd908ugunwqing.append(theform)
     
-    okayLesGo = ("{" + ''.join(asd908ugunwqing) + ('}' * (toup_text_ammount+1)))
-    print(okayLesGo)
+    ueapiogwh = ("{" + ''.join(asd908ugunwqing) + ('}' * (toup_text_ammount+1)))
 
 
 #This creates the actual script to be executed 
 dickfuck = (some_text_ig.replace("penis_cum", final_script))
-print(dickfuck)
 
 #and then this one is thebottom layers of random strings
 for x in range(top_layers): #this many interations on bottom
@@ -180,4 +217,73 @@ for x in range(top_layers): #this many interations on bottom
         asd908ugunwqing.append(theform)
     
     okayLesGo = ("{" + ''.join(asd908ugunwqing) + ('}' * (toup_text_ammount+1)))
-    print(okayLesGo)
+
+print("i-1 encrypting...")
+
+okay_less_gooooo = ("""
+{top_text_code}
+{ueapiogwh}
+{dickfuck}
+{okayLesGo}
+""").format(
+top_text_code=top_text_code,
+ueapiogwh=ueapiogwh,
+dickfuck=dickfuck,
+okayLesGo=okayLesGo
+)
+
+uwgahpoiuhgwiuagb = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+
+
+gheawiuhgauwieg = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+
+awengjanwe = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+epwiuahgiaw = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+eiawhgiuedbvg = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
+
+def encrypt(string):
+    split_string = list(string)
+    end_string = []
+    for x in range(len(split_string)):
+        end_string.append(str((ord(split_string[x]))*"I"))
+    
+    
+
+    end2 = 'llllllllllllllll'.join(end_string)
+    return(end2)
+
+pogchamp = encrypt(okay_less_gooooo)
+print("Combining strings...")
+reformated = ("""{uwgahpoiuhgwiuagb} = ('{pogchamp}')""").format(pogchamp=pogchamp,
+uwgahpoiuhgwiuagb=uwgahpoiuhgwiuagb)
+
+bottom_text_ipuahwpeg = ("""
+{epwiuahgiaw} = {uwgahpoiuhgwiuagb}.split("llllllllllllllll")
+
+{gheawiuhgauwieg} = []
+for x in range(len({epwiuahgiaw})):
+    {eiawhgiuedbvg} = (len({epwiuahgiaw}[x]))
+    {gheawiuhgauwieg}.append(chr({eiawhgiuedbvg}))
+    
+    
+{awengjanwe} = ''.join({gheawiuhgauwieg})
+exec({awengjanwe})""").format(
+uwgahpoiuhgwiuagb=uwgahpoiuhgwiuagb,
+awengjanwe=awengjanwe,
+gheawiuhgauwieg=gheawiuhgauwieg,
+epwiuahgiaw=epwiuahgiaw,
+eiawhgiuedbvg=eiawhgiuedbvg
+)
+
+nearing_the_end_script = (reformated + "\n" + bottom_text_ipuahwpeg)
+
+
+f = open(file_output, "w")
+f.write(nearing_the_end_script)
+f.close()
+
+
+end = time.time()
+elapsetime = end-start
+print("written to " + file_output)
+print("time to obfuscate: " + str(elapsetime))
