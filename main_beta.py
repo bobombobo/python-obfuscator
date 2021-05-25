@@ -3,11 +3,18 @@ import base64
 import string
 import time
 import os
-
+# !WARNING! ast obfuscation makes the program aprox 150% slower than normal
 custom_input = False
 custom_output = False
+speed_test = False
 
-code=('''print('by boboMbbobo')''')
+code=('''
+aiuweaph = "apwoigh"
+if aiuweaph == "eoaiwhg":
+  eauwpihgpeuw = "oiuwh"
+else:
+  epoaiwhgoiw = "epouawhg"
+''')
 
 
 def cls():
@@ -35,7 +42,7 @@ start = time.time()
 print("Thank you for using my python obfuscator!")
 print("Created by boboMbobo | https://github.com/bobombobo")
 print("Input: " + file_input)
-print("Output file: " + file_output)
+#print("Output file: " + file_output)
 print("--------------------------------------")
 
 
@@ -44,16 +51,12 @@ print("--------------------------------------")
 var_type = 1
 if var_type == 1:
     whathtenuts = [str(1),str(0)]
-    print("using var type 0, 1")
 elif var_type == 2:
     whathtenuts = ["I", "l"]
-    print("using var type I, l")
 elif var_type == 3:
     whathtenuts = ["O", "0"]
-    print("using var type O, 0")
 else:
     print("Dude.... not a list type available")
-
 
 
 
@@ -253,7 +256,7 @@ def encrypt(string):
     return(end2)
 
 pogchamp = encrypt(okay_less_gooooo)
-print("Combining strings...")
+#print("Combining strings...")
 reformated = ("""{uwgahpoiuhgwiuagb} = ('{pogchamp}')""").format(pogchamp=pogchamp,
 uwgahpoiuhgwiuagb=uwgahpoiuhgwiuagb)
 
@@ -282,8 +285,38 @@ f = open(file_output, "w")
 f.write(nearing_the_end_script)
 f.close()
 
+print("Starting secondary ast obfuscation...")
+import subprocess
+
+pogchampfileformat = file_output.replace(".py", "")
+
+
+cmd = "python ASTObfuscate/astobfuscate.py {file_output} {pogchampfileformat}-ast.py".format(
+file_output=file_output,
+pogchampfileformat=pogchampfileformat
+)
+
+
+subprocess.Popen(cmd, shell=True)
 
 end = time.time()
 elapsetime = end-start
-print("written to " + file_output)
+print("normal written to " + file_output)
+print("ast last layer written to " + pogchampfileformat + "-ast.py")
 print("time to obfuscate: " + str(elapsetime))
+
+
+if speed_test == True:
+  cmd = "python obfuscated.py"
+  start = time.time()
+  subprocess.call(cmd, shell=True)
+  end = time.time()
+  elapse1 = (end-start)
+  cmd = "python obfuscated-ast.py"
+  start = time.time()
+  subprocess.call(cmd, shell=True)
+  end = time.time()
+  elapse2 = (end-start)
+  how_much_faster_1_is_than_2 = (elapse1-elapse2)
+  print(str(int((elapse1/elapse2)*100)) + "% faster")
+
