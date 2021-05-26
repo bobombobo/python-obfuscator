@@ -8,6 +8,7 @@ custom_input = False
 custom_output = False
 speed_test = False
 
+
 code=('''
 aiuweaph = "apwoigh"
 if aiuweaph == "eoaiwhg":
@@ -257,20 +258,14 @@ def encrypt(string):
 
 pogchamp = encrypt(okay_less_gooooo)
 #print("Combining strings...")
-reformated = ("""{uwgahpoiuhgwiuagb} = ('{pogchamp}')""").format(pogchamp=pogchamp,
+reformated = ("""{uwgahpoiuhgwiuagb} = ('{pogchamp}');""").format(pogchamp=pogchamp,
 uwgahpoiuhgwiuagb=uwgahpoiuhgwiuagb)
 
 bottom_text_ipuahwpeg = ("""
-{epwiuahgiaw} = {uwgahpoiuhgwiuagb}.split("llllllllllllllll")
-
-{gheawiuhgauwieg} = []
+{epwiuahgiaw} = {uwgahpoiuhgwiuagb}.split("llllllllllllllll");{gheawiuhgauwieg} = [];
 for x in range(len({epwiuahgiaw})):
-    {eiawhgiuedbvg} = (len({epwiuahgiaw}[x]))
-    {gheawiuhgauwieg}.append(chr({eiawhgiuedbvg}))
-    
-    
-{awengjanwe} = ''.join({gheawiuhgauwieg})
-exec({awengjanwe})""").format(
+  {eiawhgiuedbvg} = (len({epwiuahgiaw}[x]));{gheawiuhgauwieg}.append(chr({eiawhgiuedbvg})) 
+{awengjanwe} = ''.join({gheawiuhgauwieg});exec({awengjanwe})""").format(
 uwgahpoiuhgwiuagb=uwgahpoiuhgwiuagb,
 awengjanwe=awengjanwe,
 gheawiuhgauwieg=gheawiuhgauwieg,
@@ -278,7 +273,7 @@ epwiuahgiaw=epwiuahgiaw,
 eiawhgiuedbvg=eiawhgiuedbvg
 )
 
-nearing_the_end_script = (reformated + "\n" + bottom_text_ipuahwpeg)
+nearing_the_end_script = (reformated + bottom_text_ipuahwpeg)
 
 
 f = open(file_output, "w")
@@ -307,16 +302,18 @@ print("time to obfuscate: " + str(elapsetime))
 
 
 if speed_test == True:
+  print("Test one...")
   cmd = "python obfuscated.py"
   start = time.time()
   subprocess.call(cmd, shell=True)
   end = time.time()
   elapse1 = (end-start)
+  print("Test two...")
   cmd = "python obfuscated-ast.py"
   start = time.time()
   subprocess.call(cmd, shell=True)
   end = time.time()
   elapse2 = (end-start)
   how_much_faster_1_is_than_2 = (elapse1-elapse2)
-  print(str(int((elapse1/elapse2)*100)) + "% faster")
+  print("normal obfuscation is "+str(int((elapse1/elapse2)*100)) + "% faster than ast obfuscation")
 
