@@ -3,23 +3,31 @@ import base64
 import string
 import time
 import os
+import subprocess
+import pickle
+
 # !WARNING! ast obfuscation makes the program aprox 150% slower than normal
+
+#Options
+#------------------------------------------
 custom_input = False
 custom_output = False
-speed_test = False
-
-
+speed_test = True
+add_vm_detection_to_script = False
+add_vpn_detection_to_script = False
+#------------------------------------------
+#Code
 code=('''
-aiuweaph = "apwoigh"
-if aiuweaph == "eoaiwhg":
-  eauwpihgpeuw = "oiuwh"
-else:
-  epoaiwhgoiw = "epouawhg"
+print('bruh what the fuuuuucckkk')
 ''')
-
+#------------------------------------------
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
+
+asdf = open("vmcheck_code.txt", "r")
+vmcheck_code = (asdf.read())
+
 
 if custom_input == True:
   print("Select the file to encrypt: ")
@@ -30,6 +38,11 @@ if custom_input == True:
 else:
   file_input = code
   
+if add_vm_detection_to_script == True:
+  code = (code+"\n"+vmcheck_code)
+if add_vpn_detection_to_script == True:
+  pass
+
 
 if custom_output == True:
   file_output = input("Output file: ")
@@ -250,8 +263,6 @@ def encrypt(string):
     end_string = []
     for x in range(len(split_string)):
         end_string.append(str((ord(split_string[x]))*"I"))
-    
-    
 
     end2 = 'llllllllllllllll'.join(end_string)
     return(end2)
@@ -276,21 +287,44 @@ eiawhgiuedbvg=eiawhgiuedbvg
 nearing_the_end_script = (reformated + bottom_text_ipuahwpeg)
 
 
+#f = open(file_output, "w")
+#f.write(nearing_the_end_script)
+#f.close()
+
+print("Secondary base64 encrypting")
+
+joe = (nearing_the_end_script)
+spliting = joe.encode('utf-8')
+spliting = base64.b64encode(spliting)
+spliting = spliting.decode('utf-8')
+split_strings = []
+n  = 1000
+for index in range(0, len(spliting), n):
+    split_strings.append(spliting[index : index + n])
+
+lmaooo = ('"'+ '"+"'.join(split_strings) + '"')
+XD = '''import base64;exec((base64.b64decode(({lmaooo}).encode('utf-8'))).decode('utf-8'))'''.format(lmaooo=lmaooo)
+
+print("Pickle serialization encrypting...")
+
+string_list = list(XD)
+pickle_dump = pickle.dumps(string_list)
+
+dude_im_so_done_with_this = ("""import pickle;pickle_dump = {pickle_dump};exec(''.join(pickle.loads(pickle_dump)))
+""").format(pickle_dump=pickle_dump)
+
 f = open(file_output, "w")
-f.write(nearing_the_end_script)
+f.write(dude_im_so_done_with_this)
 f.close()
 
 print("Starting secondary ast obfuscation...")
-import subprocess
 
 pogchampfileformat = file_output.replace(".py", "")
-
 
 cmd = "python ASTObfuscate/astobfuscate.py {file_output} {pogchampfileformat}-ast.py".format(
 file_output=file_output,
 pogchampfileformat=pogchampfileformat
 )
-
 
 subprocess.Popen(cmd, shell=True)
 
@@ -315,5 +349,5 @@ if speed_test == True:
   end = time.time()
   elapse2 = (end-start)
   how_much_faster_1_is_than_2 = (elapse1-elapse2)
-  print("normal obfuscation is "+str(int((elapse1/elapse2)*100)) + "% faster than ast obfuscation")
+  print("Speed difference: "+str(int((elapse1/elapse2)*100)) + "%")
 
