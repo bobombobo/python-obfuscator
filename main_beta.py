@@ -12,13 +12,13 @@ import pickle
 #------------------------------------------
 custom_input = False
 custom_output = False
-speed_test = True
+speed_test = False
 add_vm_detection_to_script = False
-add_vpn_detection_to_script = False
+add_vpn_detection_to_script = False #In works :)
 #------------------------------------------
 #Code
 code=('''
-print('bruh what the fuuuuucckkk')
+print('obfuscator by boboMbobo | https://github.com/bobombobo')
 ''')
 #------------------------------------------
 
@@ -105,7 +105,6 @@ bruhlol3=bruhlol3,
 lessgoo=lessgoo,
 )
 
-
 check_for_watermark_yes = ("""
 if watermark == ("Wow this is all it takes to make an 'obfuscator'... sad!"):
   exec('''{b64e_run}''')
@@ -114,7 +113,6 @@ if watermark == ("Wow this is all it takes to make an 'obfuscator'... sad!"):
 print("binary encrypting...")
 
 res = ''.join(format(ord(i), '08b') for i in check_for_watermark_yes)
-
 
 farted = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
 hahahahabase = dudewhatthenuts+(''.join(random.choice(whathtenuts) for i in range(12)))
@@ -310,8 +308,9 @@ print("Pickle serialization encrypting...")
 string_list = list(XD)
 pickle_dump = pickle.dumps(string_list)
 
-dude_im_so_done_with_this = ("""import pickle;pickle_dump = {pickle_dump};exec(''.join(pickle.loads(pickle_dump)))
-""").format(pickle_dump=pickle_dump)
+#dude_im_so_done_with_this = ("""import pickle;pickle_dump = {pickle_dump};exec(''.join(pickle.loads(pickle_dump)))""").format(pickle_dump=pickle_dump)
+
+dude_im_so_done_with_this = ("""import pickle;exec(''.join(pickle.loads({pickle_dump})))""").format(pickle_dump=pickle_dump)
 
 f = open(file_output, "w")
 f.write(dude_im_so_done_with_this)
@@ -350,4 +349,3 @@ if speed_test == True:
   elapse2 = (end-start)
   how_much_faster_1_is_than_2 = (elapse1-elapse2)
   print("Speed difference: "+str(int((elapse1/elapse2)*100)) + "%")
-
