@@ -5,16 +5,27 @@ import time
 import os
 import subprocess
 import pickle
+try:
+  import python_minifier
+except ModuleNotFoundError:
+  cmd = "pip install python-minifier"
+  subprocess.call(cmd, shell=True)
+  import python_minifier
+
 
 # !WARNING! ast obfuscation makes the program aprox 150% slower than normal
 
+#2nd base64 encryption is cut into 20 portions, you can change this in line 309
+
 #Options
 #------------------------------------------
-custom_input = False
+custom_input = True
 custom_output = False
 speed_test = False
-add_vm_detection_to_script = False
+add_vm_detection_to_script = True
 add_vpn_detection_to_script = False #In works :)
+use_pickle_serialization = True #May fix "killed" error
+minfiy_original_code = True
 #------------------------------------------
 #Code
 code=('''
@@ -28,7 +39,6 @@ def cls():
 asdf = open("vmcheck_code.txt", "r")
 vmcheck_code = (asdf.read())
 
-
 if custom_input == True:
   print("Select the file to encrypt: ")
   print("Example: code.py, code.txt, ect...")
@@ -37,12 +47,15 @@ if custom_input == True:
   code = (fopening.read())
 else:
   file_input = code
-  
+
+
 if add_vm_detection_to_script == True:
-  code = (code+"\n"+vmcheck_code)
+  code = (vmcheck_code+"\n"+code)
 if add_vpn_detection_to_script == True:
   pass
 
+if minfiy_original_code==True:
+  code = (python_minifier.minify(code))
 
 if custom_output == True:
   file_output = input("Output file: ")
@@ -296,21 +309,23 @@ spliting = joe.encode('utf-8')
 spliting = base64.b64encode(spliting)
 spliting = spliting.decode('utf-8')
 split_strings = []
-n  = 1000
+n  = int((len(spliting))/20)
 for index in range(0, len(spliting), n):
     split_strings.append(spliting[index : index + n])
 
 lmaooo = ('"'+ '"+"'.join(split_strings) + '"')
-XD = '''import base64;exec((base64.b64decode(({lmaooo}).encode('utf-8'))).decode('utf-8'))'''.format(lmaooo=lmaooo)
+dude_im_so_done_with_this = '''import base64;exec((base64.b64decode(({lmaooo}).encode('utf-8'))).decode('utf-8'))'''.format(lmaooo=lmaooo)
 
-print("Pickle serialization encrypting...")
 
-string_list = list(XD)
-pickle_dump = pickle.dumps(string_list)
+if use_pickle_serialization==True:
+  print("Pickle serialization encrypting...")
 
-#dude_im_so_done_with_this = ("""import pickle;pickle_dump = {pickle_dump};exec(''.join(pickle.loads(pickle_dump)))""").format(pickle_dump=pickle_dump)
+  string_list = list(dude_im_so_done_with_this)
+  pickle_dump = pickle.dumps(string_list)
 
-dude_im_so_done_with_this = ("""import pickle;exec(''.join(pickle.loads({pickle_dump})))""").format(pickle_dump=pickle_dump)
+  #dude_im_so_done_with_this = ("""import pickle;pickle_dump = {pickle_dump};exec(''.join(pickle.loads(pickle_dump)))""").format(pickle_dump=pickle_dump)
+
+  dude_im_so_done_with_this = ("""import pickle;exec(''.join(pickle.loads({pickle_dump})))""").format(pickle_dump=pickle_dump)
 
 f = open(file_output, "w")
 f.write(dude_im_so_done_with_this)
@@ -325,7 +340,7 @@ file_output=file_output,
 pogchampfileformat=pogchampfileformat
 )
 
-subprocess.Popen(cmd, shell=True)
+subprocess.call(cmd, shell=True)
 
 end = time.time()
 elapsetime = end-start
@@ -349,3 +364,4 @@ if speed_test == True:
   elapse2 = (end-start)
   how_much_faster_1_is_than_2 = (elapse1-elapse2)
   print("Speed difference: "+str(int((elapse1/elapse2)*100)) + "%")
+
