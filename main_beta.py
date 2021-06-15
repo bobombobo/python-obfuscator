@@ -5,6 +5,10 @@ import time
 import os
 import subprocess
 import pickle
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.PublicKey import RSA
+import traceback
+
 try:
   import python_minifier
 except ModuleNotFoundError:
@@ -19,18 +23,17 @@ except ModuleNotFoundError:
 
 #Options
 #------------------------------------------
-custom_input = True
+custom_input = False
 custom_output = False
 speed_test = False
 add_vm_detection_to_script = True
 add_vpn_detection_to_script = False #In works :)
 use_pickle_serialization = True #May fix "killed" error
 minfiy_original_code = True
+add_error_encryption = True
 #------------------------------------------
 #Code
-code=('''
-print('obfuscator by boboMbobo | https://github.com/bobombobo')
-''')
+code=('''0/0''')
 #------------------------------------------
 
 def cls():
@@ -53,6 +56,25 @@ if add_vm_detection_to_script == True:
   code = (vmcheck_code+"\n"+code)
 if add_vpn_detection_to_script == True:
   pass
+
+if add_error_encryption == True:
+  lessgoo = ("""
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.PublicKey import RSA
+import traceback
+try:
+  {code}
+except Exception as ex:
+  cipher = PKCS1_OAEP.new(RSA.import_key(open('public_pem.pem', 'r').read()))
+  print("You have encountered an error! Send the following message to an administrator to fix it!")
+  print("--------------error--------------")
+  ex = traceback.format_exc(limit=1)
+  message = (str(ex)).encode("utf-8")
+  cipher_text = cipher.encrypt(message)
+  print(cipher_text)
+  print("--------------error--------------")
+""").format(code=code)
+code = (lessgoo)
 
 if minfiy_original_code==True:
   code = (python_minifier.minify(code))
