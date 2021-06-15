@@ -58,6 +58,12 @@ if add_vpn_detection_to_script == True:
   pass
 
 if add_error_encryption == True:
+  private_pem = private_key.export_key().decode()
+  public_pem = public_key.export_key().decode()
+  with open('private_pem.pem', 'w') as pr:
+      pr.write(private_pem)
+  with open('public_pem.pem', 'w') as pu:
+      pu.write(public_pem)
   lessgoo = ("""
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
