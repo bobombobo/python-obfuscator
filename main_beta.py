@@ -8,7 +8,6 @@ import pickle
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
 import traceback
-
 try:
   import python_minifier
 except ModuleNotFoundError:
@@ -29,11 +28,12 @@ speed_test = False
 add_vm_detection_to_script = True
 add_vpn_detection_to_script = False #In works :)
 use_pickle_serialization = True #May fix "killed" error
-minfiy_original_code = True
+minfiy_original_code = False
 add_error_encryption = True
 #------------------------------------------
 #Code
-code=('''0/0''')
+code=('''print("hi!")
+print(hi)''')
 #------------------------------------------
 
 def cls():
@@ -58,18 +58,20 @@ if add_vpn_detection_to_script == True:
   pass
 
 if add_error_encryption == True:
+  private_key = RSA.generate(4096)
+  public_key = private_key.publickey()
   private_pem = private_key.export_key().decode()
   public_pem = public_key.export_key().decode()
   with open('private_pem.pem', 'w') as pr:
       pr.write(private_pem)
   with open('public_pem.pem', 'w') as pu:
       pu.write(public_pem)
-  lessgoo = ("""
+  lessgoo = ('''
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
 import traceback
 try:
-  {code}
+  {{code}}
 except Exception as ex:
   cipher = PKCS1_OAEP.new(RSA.import_key(open('public_pem.pem', 'r').read()))
   print("You have encountered an error! Send the following message to an administrator to fix it!")
@@ -79,7 +81,7 @@ except Exception as ex:
   cipher_text = cipher.encrypt(message)
   print(cipher_text)
   print("--------------error--------------")
-""").format(code=code)
+''').format(code=code)
 code = (lessgoo)
 
 if minfiy_original_code==True:
@@ -392,4 +394,3 @@ if speed_test == True:
   elapse2 = (end-start)
   how_much_faster_1_is_than_2 = (elapse1-elapse2)
   print("Speed difference: "+str(int((elapse1/elapse2)*100)) + "%")
-
