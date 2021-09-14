@@ -2,12 +2,13 @@ from tryImports import *
 try_all_imports()
 import time
 import subprocess
-from modules.errorencrypt import *
+from modules.errorencryptcode import *
 from modules.base64_layer1 import *
 from modules.binary_layer2 import *
 from modules.split_layer4 import *
 from modules.secondarybase64_layer5 import *
 from modules.pickle_layer6 import *
+from modules.url_obfuscation1 import *
 
 def cls():
   os.system('cls' if os.name=='nt' else 'clear')
@@ -17,21 +18,27 @@ layers = [1,2,3,4,5]
 
 custom_input = False
 custom_output = False
-speed_test = False
+speed_test = True
 add_vm_detection_to_script = False
 use_pickle_serialization = True #May fix "killed" error
 minfiy_original_code = False
 add_error_encryption = True
 do_ast_encrypt = False
+url_obfuscate = True
 var_type = 1
-
+code_url = "https://raw.githubusercontent.com/bobombobo/Roblox-group-scrapper/main/scrapper.py"
 
 
 #end of options
 
 #code unless custom input :) used for testing mainly
-code=('''
-print("hi!")''')
+code=('''print("balls!")''')
+og_code = code
+
+if url_obfuscate==True:
+  og_code = requests.get(code_url).text
+  code = url_obfuscation1(code_url)
+  code= "import requests\n"+code
 
 if minfiy_original_code==True:
   code = (python_minifier.minify(code))
@@ -59,7 +66,7 @@ else:
 
 print("Thank you for using my python obfuscator!")
 print("Created by boboMbobo | https://github.com/bobombobo")
-print("Input: " + file_input)
+print("Code input: " + og_code)
 #print("Output file: " + file_output)
 print("--------------------------------------")
 if 1 in layers:
@@ -73,6 +80,9 @@ if 4 in layers:
 if 5 in layers:
   print("pickle ✅")
 print("--------------------------------------")
+if url_obfuscate==True:
+  print("using url obfuscation for code (make sure url points to raw python code)")
+  print("--------------------------------------")
 
 start = time.time()
 
@@ -107,6 +117,7 @@ if 3 in layers:
 
 if 4 in layers:
   code = secondarybase64_layer5(code)
+
 if 5 in layers:
   code = pickle_layer6(code)
 
