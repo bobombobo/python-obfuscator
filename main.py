@@ -18,10 +18,10 @@ layers = [1,2,3,4,5]
 
 custom_input = False
 custom_output = False
-speed_test = True
-add_vm_detection_to_script = False
+speed_test = False
+add_vm_detection_to_script = True
 use_pickle_serialization = True #May fix "killed" error
-minfiy_original_code = False
+minfiy_original_code = True
 add_error_encryption = True
 do_ast_encrypt = False
 url_obfuscate = True
