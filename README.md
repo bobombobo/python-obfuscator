@@ -41,6 +41,8 @@ var_type (1, 2, and 3): This will determine how you want your names/patterns of 
 2=I,1
 3=O,0
 
+url_obfuscation (True/False): This uses a url that contains your raw code to get the code from there. Best paired with normal obfuscation, then do the url obfuscation for double the protection!
+
 
 # Example code:
 
