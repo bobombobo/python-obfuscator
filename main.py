@@ -1,7 +1,29 @@
+#no matter what an obfuscator is not 100% fool proof
+#whilst there are many layers, and complex ideas
+#a person determined enough could always crack your program
+#python is a very easy program to crack, concider using
+#more complex languages or porting to said langauge
+#like c, .net, ect...
 from tryImports import *
 try_all_imports()
 import time
 import subprocess
+import hashlib
+
+import time
+import hashlib
+import requests
+import random
+import string
+import getopt
+import http.cookiejar
+import sys
+import urllib.parse
+import urllib.request
+from http.cookies import SimpleCookie
+from json import loads as json_loads
+from os import environ
+
 from modules.errorencryptcode import *
 from modules.base64_layer1 import *
 from modules.binary_layer2 import *
@@ -9,31 +31,31 @@ from modules.split_layer4 import *
 from modules.secondarybase64_layer5 import *
 from modules.pickle_layer6 import *
 from modules.url_obfuscation1 import *
+from modules.anti_tamper import *
 
 def cls():
   os.system('cls' if os.name=='nt' else 'clear')
 
 #options :)
-layers = [1,2,3,4,5]
+layers = [1,2,4,6]
 
 custom_input = False
 custom_output = False
 speed_test = False
-add_vm_detection_to_script = True
-use_pickle_serialization = True #May fix "killed" error
+add_vm_detection_to_script = False
+use_pickle_serialization = False #May fix "killed" error
 minfiy_original_code = True
-add_error_encryption = True
+add_error_encryption = False
 do_ast_encrypt = False
 url_obfuscate = True
-var_type = 1
+var_type = 3
 code_url = "https://raw.githubusercontent.com/bobombobo/Roblox-group-scrapper/main/scrapper.py"
-
+#code_url = "https://hastebin.com/raw/atoruxezef"
 
 #end of options
 
 #code unless custom input :) used for testing mainly
 code=('''print("balls!")''')
-og_code = code
 
 if url_obfuscate==True:
   og_code = requests.get(code_url).text
@@ -41,6 +63,7 @@ if url_obfuscate==True:
   code= "import requests\n"+code
 
 if minfiy_original_code==True:
+  import python_minifier
   code = (python_minifier.minify(code))
 
 
@@ -63,9 +86,12 @@ if custom_output == True:
 else:
   file_output = ("obfuscated.py")
 
+og_code = code
+
 
 print("Thank you for using my python obfuscator!")
 print("Created by boboMbobo | https://github.com/bobombobo")
+
 print("Code input: " + og_code)
 #print("Output file: " + file_output)
 print("--------------------------------------")
@@ -100,8 +126,8 @@ if var_type == 1 or var_type == 3:
 else:
     dudewhatthenuts = ""
 
-
-code = errorencryptcode(code)
+if add_error_encryption == True:
+  code = errorencryptcode(code)
 
 if 1 in layers:
   code = base64_layer1(code, whathtenuts, dudewhatthenuts)
@@ -121,6 +147,11 @@ if 4 in layers:
 if 5 in layers:
   code = pickle_layer6(code)
 
+if 6 in layers:
+  the_stuff = gen_anti_code(code)
+  code=the_stuff[0]
+
+
 if do_ast_encrypt == True:
   print("Starting secondary ast obfuscation...")
 
@@ -135,9 +166,61 @@ f = open(file_output, "w")
 f.write(code)
 f.close()
 
+_headers = {"Referer": 'https://rentry.co'}
+
+class UrllibClient:
+      def __init__(self):
+          self.cookie_jar = http.cookiejar.CookieJar()
+          self.opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(self.cookie_jar))
+          urllib.request.install_opener(self.opener)
+
+      def get(self, url, headers={}):
+          request = urllib.request.Request(url, headers=headers)
+          return self._request(request)
+
+      def post(self, url, data=None, headers={}):
+          postdata = urllib.parse.urlencode(data).encode()
+          request = urllib.request.Request(url, postdata, headers)
+          return self._request(request)
+
+      def _request(self, request):
+          response = self.opener.open(request)
+          response.status_code = response.getcode()
+          response.data = response.read().decode('utf-8')
+          return response
+
+def edit(url, edit_code, text):
+    client, cookie = UrllibClient(), SimpleCookie()
+
+    cookie.load(vars(client.get('https://rentry.co'))['headers']['Set-Cookie'])
+    csrftoken = cookie['csrftoken'].value
+
+    payload = {
+        'csrfmiddlewaretoken': csrftoken,
+        'edit_code': edit_code,
+        'text': text
+    }
+
+    return json_loads(client.post('https://rentry.co/api/edit/{}'.format(url), payload, headers=_headers).data)
+  
+def sha256sum(filename):
+    h  = hashlib.sha256()
+    b  = bytearray(128*1024)
+    mv = memoryview(b)
+    with open(filename, 'rb', buffering=0) as f:
+        for n in iter(lambda : f.readinto(mv), 0):
+            h.update(mv[:n])
+    return h.hexdigest()
+
+if 6 in layers:
+  hash_of_file = (sha256sum(file_output))
+
+  edit(the_stuff[1], the_stuff[2], hash_of_file)
+
 end = time.time()
+
 elapsetime = end-start
-print("normal written to " + file_output)
+print("obfuscation was written to " + file_output)
 if do_ast_encrypt == True:
   print("ast last layer written to " + pogchampfileformat + "-ast.py")
 print("time to obfuscate: " + str(elapsetime))
