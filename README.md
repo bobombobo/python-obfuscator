@@ -1,3 +1,6 @@
+# JOIN THE DISCORD!!!!!!!
+https://discord.gg/2HCX5Dqhsq
+
 # python-obfuscator
 different obfuscator/encryptions methods made by me
 
