@@ -21,6 +21,7 @@ Layers:
   - Layer 3: Layer 3 is splitting of the code with 1's and i's.
   - Layer 4: Secondary base64 encryption this time with a different method 
   - Layer 5: Pickle serialization so it can't be read by a human.
+  - Layer 6: Pickle serialization for no-tamper exploitation. When unserialized the code is ran to check if someone has tampered with the code
 
 custom_input (True/False): If True a custom input of a file will be needed to then be imported as code. If False a varaible will be used to determine the code to obfuscate. 
 
@@ -40,8 +41,6 @@ var_type (1, 2, and 3): This will determine how you want your names/patterns of 
 1=1,0
 2=I,1
 3=O,0
-
-url_obfuscation (True/False): This uses a url that contains your raw code to get the code from there. Best paired with normal obfuscation, then do the url obfuscation for double the protection!
 
 
 # Example code:
