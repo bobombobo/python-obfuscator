@@ -37,7 +37,8 @@ def cls():
   os.system('cls' if os.name=='nt' else 'clear')
 
 #options :)
-layers = [1,2,4,6]
+
+layers = [6, 2, 4, 3, 5, 1]
 
 custom_input = False
 custom_output = False
@@ -47,7 +48,7 @@ use_pickle_serialization = False #May fix "killed" error
 minfiy_original_code = True
 add_error_encryption = False
 do_ast_encrypt = False
-url_obfuscate = True
+url_obfuscate = False
 var_type = 3
 code_url = "https://raw.githubusercontent.com/bobombobo/Roblox-group-scrapper/main/scrapper.py"
 #code_url = "https://hastebin.com/raw/atoruxezef"
@@ -129,27 +130,30 @@ else:
 if add_error_encryption == True:
   code = errorencryptcode(code)
 
-if 1 in layers:
-  code = base64_layer1(code, whathtenuts, dudewhatthenuts)
 
-#Check in the module file to see what the numbers doe and such. I explain it there 
-#variable_ammount_lenght, toup_text_ammount, ammount, top_layers
-if 2 in layers:
-  code = binary_layer2(code, whathtenuts, dudewhatthenuts,10, 10, 1, 5)
+for x in layers:
 
-#code = list_layer3(code, whathtenuts, dudewhatthenuts, top_text_code)
-if 3 in layers:
-  code = split_layer4(code, whathtenuts, dudewhatthenuts)
+  if x==1:
+    code = base64_layer1(code, whathtenuts, dudewhatthenuts)
 
-if 4 in layers:
-  code = secondarybase64_layer5(code)
+  #Check in the module file to see what the numbers doe and such. I explain it there 
+  #variable_ammount_lenght, toup_text_ammount, ammount, top_layers
+  if x==2:
+    code = binary_layer2(code, whathtenuts, dudewhatthenuts,10, 10, 1, 5)
 
-if 5 in layers:
-  code = pickle_layer6(code)
+  #code = list_layer3(code, whathtenuts, dudewhatthenuts, top_text_code)
+  if x==3:
+    code = split_layer4(code, whathtenuts, dudewhatthenuts)
 
-if 6 in layers:
-  the_stuff = gen_anti_code(code)
-  code=the_stuff[0]
+  if x==4:
+    code = secondarybase64_layer5(code)
+
+  if x==5:
+    code = pickle_layer6(code)
+
+  if x==6:
+    the_stuff = gen_anti_code(code)
+    code=the_stuff[0]
 
 
 if do_ast_encrypt == True:
