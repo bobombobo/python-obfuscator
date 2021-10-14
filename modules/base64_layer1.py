@@ -29,8 +29,5 @@ exec({bruhlol3})
   lessgoo=lessgoo,
   )
 
-  check_for_watermark_yes = ("""
-if watermark == ("Wow this is all it takes to make an 'obfuscator'... sad!"):
-  exec('''{b64e_run}''')
-  """).format(b64e_run=b64e_run)
+  check_for_watermark_yes = ("""exec('''{b64e_run}''')""").format(b64e_run=b64e_run)
   return (check_for_watermark_yes)
