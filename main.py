@@ -266,7 +266,7 @@ if 6 in layers:
   hash_of_file = (sha256sum(file_output))
 
   edit(the_stuff[1], the_stuff[2], hash_of_file)
-  print("succesfully edited anit tamper hash")
+  print("succesfully edited anti tamper hash")
 
 end = time.time()
 
