@@ -4,11 +4,26 @@
 #python is a very easy program to crack, concider using
 #more complex languages or porting to said langauge
 #like c, .net, ect...
+#----------
+#astor abofusction adds a lot of security
+#astor modules is needed btw (pip install astor)
+#
+
+
+import threading
+import time
+import sys
+import random
+import os
+
+from helpers.pretty_logo import *
+print(pretty_logo_func("loading"))
 from tryImports import *
 try_all_imports()
-import time
 import subprocess
 import hashlib
+import threading
+
 
 import time
 import hashlib
@@ -33,12 +48,18 @@ from modules.pickle_layer6 import *
 from modules.url_obfuscation1 import *
 from modules.anti_tamper import *
 
+from external_modules.py_fuscate import *
+from external_modules.wodx_obfuscate import *
+
 def cls():
   os.system('cls' if os.name=='nt' else 'clear')
 
 #options :)
 
-layers = [6, 2, 4, 3, 5, 1]
+layers = [6,3,4,3]
+external_layers = [1,2]
+
+
 
 custom_input = False
 custom_output = False
@@ -51,21 +72,21 @@ do_ast_encrypt = False
 url_obfuscate = False
 var_type = 3
 code_url = "https://raw.githubusercontent.com/bobombobo/Roblox-group-scrapper/main/scrapper.py"
+py_fuscate_iterations = 10
 #code_url = "https://hastebin.com/raw/atoruxezef"
 
 #end of options
+cls()
+print(pretty_logo_func("done"))
+
 
 #code unless custom input :) used for testing mainly
-code=('''print("balls!")''')
+code=('''print("obfuscated by boboMbobo")''')
 
 if url_obfuscate==True:
   og_code = requests.get(code_url).text
   code = url_obfuscation1(code_url)
   code= "import requests\n"+code
-
-if minfiy_original_code==True:
-  import python_minifier
-  code = (python_minifier.minify(code))
 
 
 if custom_input == True:
@@ -87,15 +108,16 @@ if custom_output == True:
 else:
   file_output = ("obfuscated.py")
 
-og_code = code
+if minfiy_original_code==True:
+  import python_minifier
+  code = (python_minifier.minify(code))
 
-
-print("Thank you for using my python obfuscator!")
-print("Created by boboMbobo | https://github.com/bobombobo")
+og_code=code
 
 print("Code input: " + og_code)
 #print("Output file: " + file_output)
 print("--------------------------------------")
+print("               layers")
 if 1 in layers:
  print("base64 (1) ✅")
 if 2 in layers: 
@@ -106,7 +128,17 @@ if 4 in layers:
   print("base64 (2) ✅")
 if 5 in layers:
   print("pickle ✅")
+if 6 in layers:
+  print("anti tamper ✅")
 print("--------------------------------------")
+print("           external layers")
+if 1 in external_layers:
+  print("py_fuscate ✅ | iterations: " + str(py_fuscate_iterations))
+if 2 in external_layers:
+  print("wodx_obfuscate ✅")
+  
+print("--------------------------------------")
+
 if url_obfuscate==True:
   print("using url obfuscation for code (make sure url points to raw python code)")
   print("--------------------------------------")
@@ -126,6 +158,10 @@ if var_type == 1 or var_type == 3:
     dudewhatthenuts = "O"
 else:
     dudewhatthenuts = ""
+
+wodx_OFFSET = 10
+wodx_VARIABLE_NAME = 'poggers_' * 10
+
 
 if add_error_encryption == True:
   code = errorencryptcode(code)
@@ -154,6 +190,16 @@ for x in layers:
   if x==6:
     the_stuff = gen_anti_code(code)
     code=the_stuff[0]
+
+for x in external_layers:
+  if x==1:
+    print("py_fuscate encrypting")
+    for x in range(py_fuscate_iterations):
+      code = marsh_enc(code)
+
+  if x==2:
+    print("wodx encrypting")
+    code = wodx_obfuscate(code, wodx_VARIABLE_NAME, wodx_OFFSET)
 
 
 if do_ast_encrypt == True:
@@ -220,6 +266,7 @@ if 6 in layers:
   hash_of_file = (sha256sum(file_output))
 
   edit(the_stuff[1], the_stuff[2], hash_of_file)
+  print("succesfully edited anit tamper hash")
 
 end = time.time()
 
