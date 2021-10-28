@@ -1,0 +1,7 @@
+exec('''
+import base64
+OOOO0O0OO0O00 = b'cHJpbnQoJ29iZnVzY2F0ZWQgYnkgYm9ib01ib2JvJyk='
+OOO000OO00OO0 = base64.b64decode(OOOO0O0OO0O00)
+O0O00OOOO00OO = OOO000OO00OO0.decode('utf-8')
+exec(O0O00OOOO00OO)
+  ''')
