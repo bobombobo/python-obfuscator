@@ -7,18 +7,20 @@
 #----------
 #astor abofusction adds a lot of security
 #astor modules is needed btw (pip install astor)
-#
 
 
-import threading
-import time
-import sys
-import random
-import os
+
+#import threading
+#import time
+#import sys
+#import random
+#import os
+
+version=("v2.4.1")
 
 from helpers.pretty_logo import *
 print(pretty_logo_func("loading"))
-from tryImports import *
+from helpers.tryImports import *
 try_all_imports()
 import subprocess
 import hashlib
@@ -50,16 +52,15 @@ from modules.anti_tamper import *
 
 from external_modules.py_fuscate import *
 from external_modules.wodx_obfuscate import *
+from external_modules.kramer import *
 
 def cls():
   os.system('cls' if os.name=='nt' else 'clear')
 
 #options :)
 
-layers = [6,3,4,3]
-external_layers = [1,2]
-
-
+layers = []
+external_layers = [3]
 
 custom_input = False
 custom_output = False
@@ -136,6 +137,8 @@ if 1 in external_layers:
   print("py_fuscate ✅ | iterations: " + str(py_fuscate_iterations))
 if 2 in external_layers:
   print("wodx_obfuscate ✅")
+if 3 in external_layers:
+  print("Kramer ✅")
   
 print("--------------------------------------")
 
@@ -200,6 +203,10 @@ for x in external_layers:
   if x==2:
     print("wodx encrypting")
     code = wodx_obfuscate(code, wodx_VARIABLE_NAME, wodx_OFFSET)
+  if x ==3:
+    print("kramer encrypting")
+    code = kramer_func(code)
+
 
 
 if do_ast_encrypt == True:
