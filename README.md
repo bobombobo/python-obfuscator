@@ -2,11 +2,16 @@
 https://discord.gg/2HCX5Dqhsq
 
 # python-obfuscator
-different obfuscator/encryptions methods made by me
+different obfuscator/encryptions methods made by me and some from others in the comunnity.
 
 Obfuscate your python code to make it almost impsossible to read but a computer can still understand it without a flaw.
 
 (Sorry for shit documentation and horrible commenting. Also sorry for the terrible variable names lol :)
+
+# Update V2.4
+Added Kramer obfuscation method as an external module (#3) (https://github.com/billythegoat356/Kramer)
+
+Added a version check t ocheck version of repo and client version.
 
 # V2 RELEASE! Info:
 
@@ -25,6 +30,10 @@ Layers:
   - Layer 4: Secondary base64 encryption this time with a different method 
   - Layer 5: Pickle serialization so it can't be read by a human.
   - Layer 6: Pickle serialization for no-tamper exploitation. When unserialized the code is ran to check if someone has tampered with the code
+External Layers:
+  - Layer 1: py_fuscate method
+  - Layer 2: wodx_obfuscate method
+  - Layer 3: kramer method
 
 custom_input (True/False): If True a custom input of a file will be needed to then be imported as code. If False a varaible will be used to determine the code to obfuscate. 
 
@@ -46,6 +55,3 @@ var_type (1, 2, and 3): This will determine how you want your names/patterns of 
 3=O,0
 
 
-# Example code:
-
-Deleted till further updates
